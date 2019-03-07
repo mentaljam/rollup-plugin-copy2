@@ -11,7 +11,7 @@ interface IPluginOptions {
 }
 
 export default (options: IPluginOptions): Plugin => ({
-  name: 'copy2-plugin',
+  name: 'copy2',
   generateBundle(_, bundle) {
     if (!(options && options.assets && isArray(options.assets))) {
       this.error('Plugin options are invalid')

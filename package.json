@@ -15,6 +15,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
+    "install": "npm run build",
     "lint": "tslint -p .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

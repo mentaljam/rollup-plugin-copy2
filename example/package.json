@@ -1,0 +1,14 @@
+{
+  "name": "rollup-plugin-copy2-example",
+  "version": "1.0.0",
+  "description": "Usage example for the rollup-plugin-copy2.",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "Petr Tsymbarovich <petr@tsymbarovich.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^1.5.0",
+    "rollup-plugin-copy2": "../"
+  }
+}

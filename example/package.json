@@ -8,7 +8,7 @@
   "author": "Petr Tsymbarovich <petr@tsymbarovich.ru>",
   "license": "MIT",
   "devDependencies": {
-    "rollup": "^1.5.0",
+    "rollup": "^1.14.5",
     "rollup-plugin-copy2": "../"
   }
 }

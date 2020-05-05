@@ -12,7 +12,7 @@ interface IPluginOptions {
 
 export default (options: IPluginOptions): Plugin => ({
   name: 'copy2',
-  generateBundle(_, bundle) {
+  generateBundle() {
     if (!(options && options.assets && isArray(options.assets))) {
       this.error('Plugin options are invalid')
     }
@@ -23,8 +23,8 @@ export default (options: IPluginOptions): Plugin => ({
     }
     const srcDir = process.cwd()
     assets.forEach(asset => {
-      let srcFile
-      let fileName
+      let srcFile:  string
+      let fileName: string
       if (isString(asset)) {
         srcFile = asset
         fileName = asset
@@ -33,7 +33,6 @@ export default (options: IPluginOptions): Plugin => ({
         fileName = asset[1]
       } else {
         this.error('Asset should be a string or a pair of strings [string, string]')
-        return
       }
       srcFile = path.normalize(srcFile)
       if (!path.isAbsolute(srcFile)) {
@@ -42,11 +41,12 @@ export default (options: IPluginOptions): Plugin => ({
       if (!fs.existsSync(srcFile) || !fs.statSync(srcFile).isFile()) {
         this.error(`"${srcFile}" doesn't exist`)
       }
-      bundle[fileName] = {
+      const source = fs.readFileSync(srcFile)
+      this.emitFile({
         fileName,
-        isAsset: true,
-        source: fs.readFileSync(srcFile),
-      }
+        source,
+        type: 'asset',
+      })
     })
   },
 })

@@ -6,11 +6,13 @@ import {isArray, isString} from 'util'
 
 type CopyEntry = string | [string, string]
 
-interface IPluginOptions {
+interface IPluginCopy2Options {
   assets: CopyEntry[]
 }
 
-export default (options: IPluginOptions): Plugin => ({
+type RollupPluginCopy2 = (options: IPluginCopy2Options) => Plugin
+
+const rollupPluginCopy2: RollupPluginCopy2 = (options) => ({
   name: 'copy2',
   generateBundle() {
     if (!(options && options.assets && isArray(options.assets))) {
@@ -22,14 +24,14 @@ export default (options: IPluginOptions): Plugin => ({
       return
     }
     const srcDir = process.cwd()
-    assets.forEach(asset => {
+    for (const asset of assets) {
       let srcFile:  string
       let fileName: string
       if (isString(asset)) {
-        srcFile = asset
+        srcFile  = asset
         fileName = asset
       } else if (isArray(asset) && asset.length === 2) {
-        srcFile = asset[0]
+        srcFile  = asset[0]
         fileName = asset[1]
       } else {
         this.error('Asset should be a string or a pair of strings [string, string]')
@@ -47,6 +49,8 @@ export default (options: IPluginOptions): Plugin => ({
         source,
         type: 'asset',
       })
-    })
+    }
   },
 })
+
+export default rollupPluginCopy2

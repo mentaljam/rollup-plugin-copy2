@@ -10,16 +10,20 @@
   "bugs": {
     "url": "https://github.com/mentaljam/rollup-plugin-copy2/issues"
   },
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build:esm": "tsc -m es6 --outDir dist/esm",
+    "build:cjs": "tsc -m commonjs --outDir dist/cjs",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:types",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -32,7 +36,6 @@
   "devDependencies": {
     "@types/node": "^13.13.4",
     "rollup": "^2.7.6",
-    "rollup-plugin-typescript2": "^0.27.0",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {

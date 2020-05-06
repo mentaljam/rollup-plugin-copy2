@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-copy2",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Rollup plugin to copy additional assets to the build directory.",
   "homepage": "https://github.com/mentaljam/rollup-plugin-copy2",
   "repository": {

@@ -5,15 +5,15 @@ importers:
       rollup: 2.8.0
       typescript: 3.8.3
     specifiers:
-      '@types/node': ^13.13.4
-      rollup: ^2.7.6
+      '@types/node': ^13.13.5
+      rollup: ^2.8.0
       typescript: ^3.8.3
   example:
     devDependencies:
       rollup: 2.8.0
       rollup-plugin-copy2: 'link:..'
     specifiers:
-      rollup: ^2.7.6
+      rollup: ^2.8.0
       rollup-plugin-copy2: ../
 lockfileVersion: 5.1
 packages:

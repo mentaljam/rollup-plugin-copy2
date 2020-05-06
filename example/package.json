@@ -10,7 +10,7 @@
   "author": "Petr Tsymbarovich <petr@tsymbarovich.ru>",
   "license": "MIT",
   "devDependencies": {
-    "rollup": "^2.7.6",
+    "rollup": "^2.8.0",
     "rollup-plugin-copy2": "../"
   }
 }

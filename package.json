@@ -20,7 +20,6 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "lint": "tslint -p .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -33,10 +32,7 @@
   "devDependencies": {
     "@types/node": "^13.13.4",
     "rollup": "^2.7.6",
-    "rollup-plugin-tslint": "^0.2.2",
     "rollup-plugin-typescript2": "^0.27.0",
-    "tslint": "^6.1.2",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {

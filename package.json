@@ -24,7 +24,8 @@
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
     "build": "npm run build:esm && npm run build:cjs && npm run build:types",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "npm run build",
+    "test": "npm --prefix example run test"
   },
   "keywords": [
     "rollup",

@@ -1,5 +1,7 @@
 import copy from 'rollup-plugin-copy2'
 
+import assets from './assets.mjs'
+
 
 export default {
   input: 'index.js',
@@ -9,10 +11,7 @@ export default {
   },
   plugins: [
     copy({
-      assets: [
-        'README.md',
-        ['data.txt', 'assets/data.txt'],
-      ]
+      assets
     }),
   ],
 }

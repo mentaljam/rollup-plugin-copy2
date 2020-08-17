@@ -3,7 +3,7 @@
 [Rollup](https://github.com/rollup/rollup) plugin to copy additional assets
 to the build directory.
 
-This plugin actually does not copy assets but adds them to the resulting bundle
+This plugin actually does not copy assets by default but adds them to the resulting bundle
 so they could be accessed by other plugins (for example by the
 [rollup-plugin-zip](https://github.com/mentaljam/rollup-plugin-zip)).
 
@@ -49,12 +49,25 @@ export default {
 (string | [string, string])[]
 ```
 
-An array of assets to copy. Each entry can be a `string` that contains a relative
-path to the source file, or a pair of strings `[string, string]` that contains
-relative paths to the source and destination files.
+An array of assets to copy. Each entry can be 
+- a `string` that contains a relative path to the source file
+- a [glob](https://github.com/isaacs/node-glob) compatible path resulting to one or some files like `node_modules/static-deps/**/*.css`
+- a pair of strings `[string, string]` that contains relative paths to the source (not glob ones) and destination files.
 
 If an entry is a single string then the destination file path will be equal to it
 (relative to the output directory).
+
+### outputDirectory
+
+#### Type
+
+```js
+string?
+```
+
+A path to the output directory in case you want to write copied files on disk.
+
+If not set, the files are only emitted to the others plugins.
 
 ## License
 

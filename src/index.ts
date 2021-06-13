@@ -20,7 +20,7 @@ const rollupPluginCopy2: RollupPluginCopy2 = (options) => ({
     }
     const {assets} = options
     if (!assets.length) {
-      this.warn('An empty list of asstes was passed to plugin options')
+      this.warn('An empty list of assets was passed to plugin options')
       return
     }
     const srcDir = process.cwd()

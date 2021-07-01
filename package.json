@@ -19,6 +19,7 @@
     "README.md"
   ],
   "scripts": {
+    "install": "pnpm i",
     "build:esm": "tsc -m es6 --outDir dist/esm",
     "build:cjs": "tsc -m commonjs --outDir dist/cjs",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",

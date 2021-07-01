@@ -1,5 +1,4 @@
 import fs from 'fs'
-import {isArray, isString} from 'util'
 
 import assets from './assets.mjs'
 
@@ -20,9 +19,9 @@ const compare = (src, dst) => {
 }
 
 for (const asset of assets) {
-  if (isString(asset)) {
+  if (typeof asset === 'string') {
     compare(asset, asset)
-  } else if (isArray(asset)) {
+  } else if (Array.isArray(asset)) {
     compare(...asset)
   } else {
     throw new Error('Unexpected data')

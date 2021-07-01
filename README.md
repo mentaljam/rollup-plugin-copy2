@@ -57,6 +57,17 @@ An array of assets to copy. Each entry can be
 If an entry is a single string then the destination file path will be equal to it
 (relative to the output directory).
 
+### notEmitFiles
+
+#### Type
+
+```js
+boolean?
+```
+
+Do not emit files with Rollup. Use this option with [outputDirectory](#outputDirectory)
+if you only want to copy files to a specific directory.
+
 ### outputDirectory
 
 #### Type

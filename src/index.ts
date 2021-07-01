@@ -8,6 +8,7 @@ type CopyEntry = string | [string, string]
 
 interface IPluginCopy2Options {
   assets:           CopyEntry[]
+  notEmitFiles?:    boolean
   outputDirectory?: string
 }
 
@@ -19,15 +20,19 @@ const rollupPluginCopy2: RollupPluginCopy2 = (options) => ({
     if (!(options && options.assets && Array.isArray(options.assets))) {
       this.error('Plugin options are invalid')
     }
-    const {assets} = options
+    const {assets, notEmitFiles} = options
     if (!assets.length) {
       this.warn('An empty list of assets was passed to plugin options')
       return
     }
     const srcDir = process.cwd()
     let outDir   = options.outputDirectory
-    if (outDir && !path.isAbsolute(outDir)) {
-      outDir = path.resolve(srcDir, outDir)
+    if (outDir) {
+      if (!path.isAbsolute(outDir)) {
+        outDir = path.resolve(srcDir, outDir)
+      }
+    } else if (notEmitFiles) {
+      this.error('`notEmitFiles` is set but `outputDirectory` is not provided')
     }
     for (const asset of assets) {
       let srcFile:  string
@@ -58,11 +63,13 @@ const rollupPluginCopy2: RollupPluginCopy2 = (options) => ({
           fileName = path.relative(srcDir, file)
         }
         const source = fs.readFileSync(file)
-        this.emitFile({
-          fileName,
-          source,
-          type: 'asset',
-        })
+        if (!notEmitFiles) {
+          this.emitFile({
+            fileName,
+            source,
+            type: 'asset',
+          })
+        }
         if (outDir) {
           const filePath = path.resolve(outDir, fileName)
           fs.mkdirSync(path.dirname(filePath), {recursive: true})

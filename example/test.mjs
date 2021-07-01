@@ -1,4 +1,5 @@
 import fs from 'fs'
+import glob from 'glob'
 
 import assets from './assets.mjs'
 
@@ -20,7 +21,7 @@ const compare = (src, dst) => {
 
 for (const asset of assets) {
   if (typeof asset === 'string') {
-    compare(asset, asset)
+    glob.sync(asset).forEach(a => compare(a, a))
   } else if (Array.isArray(asset)) {
     compare(...asset)
   } else {

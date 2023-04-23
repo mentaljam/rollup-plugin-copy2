@@ -5,12 +5,13 @@
   "scripts": {
     "build": "rollup -c",
     "pretest": "npm run build",
-    "test": "node test.mjs"
+    "test": "node test.js"
   },
   "author": "Petr Tsymbarovich <petr@tsymbarovich.ru>",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
-    "rollup": "^2.52.6",
+    "rollup": "^3.20.7",
     "rollup-plugin-copy2": "../"
   }
 }

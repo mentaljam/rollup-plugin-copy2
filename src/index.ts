@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import {Plugin} from 'rollup'
-import * as glob from 'glob'
+import {glob} from 'glob'
 
 
 type CopyEntry = string | [string, string]
@@ -50,6 +50,9 @@ const rollupPluginCopy2: RollupPluginCopy2 = (options) => ({
       srcFile = path.normalize(srcFile)
       if (!path.isAbsolute(srcFile)) {
         srcFile = path.resolve(srcDir, srcFile)
+      }
+      if (process.platform === 'win32') {
+        srcFile = srcFile.replace(/\\+/g, '/')
       }
       const files = glob.sync(srcFile)
       if (files.length === 0) {

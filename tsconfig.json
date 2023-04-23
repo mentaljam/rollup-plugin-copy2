@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "esnext",
     "moduleResolution": "node",
     "sourceMap": false,
     "declaration": false,
@@ -8,6 +8,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "outDir": "dist",
+    "rootDir": "src"
   },
   "include": [
     "./src"

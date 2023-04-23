@@ -1,7 +1,7 @@
 import fs from 'fs'
-import glob from 'glob'
+import {globSync} from 'glob'
 
-import assets from './assets.mjs'
+import assets from './assets.js'
 
 
 const test = (cond, src, dst, message) => {
@@ -21,7 +21,7 @@ const compare = (src, dst) => {
 
 for (const asset of assets) {
   if (typeof asset === 'string') {
-    glob.sync(asset).forEach(a => compare(a, a))
+    globSync(asset).forEach(a => compare(a, a))
   } else if (Array.isArray(asset)) {
     compare(...asset)
   } else {

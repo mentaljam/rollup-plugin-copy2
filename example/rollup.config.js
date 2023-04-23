@@ -1,6 +1,6 @@
 import copy from 'rollup-plugin-copy2'
 
-import assets from './assets.mjs'
+import assets from './assets.js'
 
 
 export default {
